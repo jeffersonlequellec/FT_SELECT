@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/30 08:53:32 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/02 15:17:57 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/02 18:35:26 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,13 @@ int					ft_errno(int error);
 int					ft_initiate_terms(void);
 int					ft_to_canonique(void);
 int					ft_clear_shell(void);
+int					ft_place_cursor(void);
 
 /*
 ** FT_END_OF_PROGRAM.C
 */
 
 int					ft_to_non_canonique(void);
-
-/*
-** FT_SIGNAL.C
-*/
-
-void				ft_sigquit(int sig);
 
 /*
 ** FT_SELECT.C

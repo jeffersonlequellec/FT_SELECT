@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 15:15:52 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/02 17:11:19 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/02 18:33:07 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,24 @@
 int		ft_select(void)
 {
 	char	*line;
-	int		x;
-	int		y;
+	int		width;
+	int		height;
 
-	x = 0;
-	y = 0;
-	ft_putendl_fd(tgoto(tgetstr("cm", NULL), x, y), 0);
-	while (42)
+	width = 0;
+	height = 0;
+	while (get_next_line(0, &line))
 	{
+		if (*line == 'Q')
+			break ;
+		if (*line == 'x')
+			ft_putstr_fd(tgoto(tgetstr("cm", NULL), width, height += 1), 0);
+		if (*line == 's')
+			ft_putstr_fd(tgoto(tgetstr("cm", NULL), width, height -= 1), 0);
+		if (*line == 'd')
+			ft_putstr_fd(tgoto(tgetstr("cm", NULL), width += 1, height), 0);
+		if (*line == 'a')
+			ft_putstr_fd(tgoto(tgetstr("cm", NULL), width -= 1, height), 0);
+		ft_strdel(&line);
 	}
 	return (0);
 }

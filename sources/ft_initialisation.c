@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/01 13:34:43 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/02 15:55:46 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/02 18:34:42 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,15 @@ int		ft_clear_shell(void)
 	if (!(clear_shell = tgetstr("cl", NULL)))
 		return (ft_errno(NO_STR));
 	ft_putstr_fd(clear_shell, 0);
+	return (0);
+}
+
+int		ft_place_cursor(void)
+{
+	char	*cursor;
+
+	if (!(cursor = tgetstr("cm", NULL)))
+		return (ft_errno(NO_STR));
+	ft_putstr_fd(tgoto(cursor, 0, 0), 0);
 	return (0);
 }
