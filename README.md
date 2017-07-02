@@ -1,5 +1,4 @@
 # FT_SELECT
 
-Ce projet a pour but de vous faire coder un petit programme en termcaps qui
-permettra de selectionner un ensemble de choix parmi une liste et de le retourner à
-votre shell.
+This project is meant to make you code a small program using termcaps
+which will allow you to pick from a list of choices and return it to your shell.
