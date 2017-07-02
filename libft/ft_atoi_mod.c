@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_end_of_program.c                                :+:      :+:    :+:   */
+/*   ft_atoi_mod.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/02 14:31:13 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/02 20:17:15 by jle-quel         ###   ########.fr       */
+/*   Created: 2017/07/02 20:19:29 by jle-quel          #+#    #+#             */
+/*   Updated: 2017/07/02 20:19:36 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_select.h"
+#include "libft.h"
 
-int		ft_to_non_canonique(void)
+int		ft_atoi_mod(char *str)
 {
-	struct termios	term;
-
-	if (tcgetattr(0, &term) == -1)
-		return (ft_errno(NO_TMS));
-	// term.c_lflag = (ICANON | ECHO);
-	if (tcsetattr(0, TCSADRAIN, &term) == 1)
-		return (ft_errno(NO_SET));
-	return (0);
+	int		*ptr;
+	ptr = (int*)str;
+	return (*ptr);
 }

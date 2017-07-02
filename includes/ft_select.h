@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/30 08:53:32 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/02 18:35:26 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/02 20:24:39 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 # include <sys/ioctl.h>
 # include <curses.h>
 # include <term.h>
+
+# define UP_ARROW 4283163
+# define DO_ARROW 4348699
+# define LE_ARROW 4414235
+# define RI_ARRROW 4479771
 
 /*
 ** ERRNO

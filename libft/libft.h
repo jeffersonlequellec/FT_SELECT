@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/10 09:42:08 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/01 10:38:04 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/02 20:19:54 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ char					*ft_threejoin(char *s1, char *separator, char *s2);
 void					ft_arraydel(char ***array, size_t len);
 void					ft_dellst(t_list **node);
 t_list					*ft_populate_list(char **argv);
+int						ft_atoi_mod(char *str);
 
 /*
 ** LIBFT
