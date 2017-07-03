@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/10 09:42:08 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/02 20:19:54 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/03 17:09:45 by jefferson        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ void					ft_arraydel(char ***array, size_t len);
 void					ft_dellst(t_list **node);
 t_list					*ft_populate_list(char **argv);
 int						ft_atoi_mod(char *str);
+size_t					ft_lstlen(t_list *node);
 
 /*
 ** LIBFT
 */
 int						get_next_line(const int fd, char **line);
-int						ft_lstlen(t_list **list);
 t_list					*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void					ft_lstdelone(t_list **alst, void (*del)(void *,
 						size_t));

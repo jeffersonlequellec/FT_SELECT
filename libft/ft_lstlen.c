@@ -3,26 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-quel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/20 18:37:00 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/03/20 18:46:29 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/03 17:10:22 by jefferson        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_lstlen(t_list **list)
+size_t	ft_lstlen(t_list *node)
 {
-	int		index;
-	t_list	*node;
+	size_t	ret;
+	t_list	*temp;
 
-	index = 0;
-	node = *list;
-	while (node)
+	ret = 0;
+	temp = node;
+	while (temp)
 	{
-		index++;
-		node = node->next;
+		ret++;
+		temp = temp->next;
 	}
-	return (index);
+	return (ret);
 }

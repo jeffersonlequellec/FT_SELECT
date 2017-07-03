@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/30 08:53:32 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/02 20:24:39 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/03 19:54:34 by jefferson        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@
 
 # define UP_ARROW 4283163
 # define DO_ARROW 4348699
-# define LE_ARROW 4414235
-# define RI_ARRROW 4479771
+
+typedef struct		s_select
+{
+	struct termios	eop;
+}					t_select;
 
 /*
 ** ERRNO
@@ -47,21 +50,15 @@ int					ft_errno(int error);
 ** FT_INITIALISATION.C
 */
 
-int					ft_initiate_terms(void);
-int					ft_to_canonique(void);
+int					ft_initiate_terms(t_select *var);
+int					ft_to_non_canonique(void);
 int					ft_clear_shell(void);
 int					ft_place_cursor(void);
-
-/*
-** FT_END_OF_PROGRAM.C
-*/
-
-int					ft_to_non_canonique(void);
 
 /*
 ** FT_SELECT.C
 */
 
-int					ft_select(void);
+int					ft_select(int argc);
 
 #endif

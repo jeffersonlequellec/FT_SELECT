@@ -6,13 +6,13 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/01 13:34:43 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/02 18:34:42 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/03 19:54:20 by jefferson        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
 
-int		ft_initiate_terms(void)
+int		ft_initiate_terms(t_select *var)
 {
 	int				result;
 	char			*terminal_type;
@@ -23,10 +23,12 @@ int		ft_initiate_terms(void)
 		return (ft_errno(NO_ENTRY));
 	if (result == -1)
 		return (ft_errno(NO_DB));
+	if (tcgetattr(0, &var->eop) == -1)
+		return (ft_errno(NO_TMS));
 	return (0);
 }
 
-int		ft_to_canonique(void)
+int		ft_to_non_canonique(void)
 {
 	struct termios	term;
 
