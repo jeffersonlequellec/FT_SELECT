@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/10 09:42:08 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/03 17:09:45 by jefferson        ###   ########.fr       */
+/*   Updated: 2017/07/07 15:43:58 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void					ft_dellst(t_list **node);
 t_list					*ft_populate_list(char **argv);
 int						ft_atoi_mod(char *str);
 size_t					ft_lstlen(t_list *node);
+void					ft_print_in_color(char *str, char *color);
 
 /*
 ** LIBFT

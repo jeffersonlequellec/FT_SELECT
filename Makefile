@@ -6,7 +6,7 @@
 #    By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/06/02 12:01:32 by jle-quel          #+#    #+#              #
-#    Updated: 2017/07/03 17:06:35 by jefferson        ###   ########.fr        #
+#    Updated: 2017/07/07 14:25:41 by jle-quel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRC =	./sources/main.c \
 		./sources/ft_tools.c \
 		./sources/ft_initialisation.c \
 		./sources/ft_select.c \
+		./sources/ft_display.c \
 
 OBJ = $(SRC:.c=.o)
 
@@ -47,4 +48,5 @@ fclean: clean
 	@make -C libft fclean
 	@echo "\033[32mRemoved Executable\033[0m"
 
-re: fclean all
+re: fclean
+	@make

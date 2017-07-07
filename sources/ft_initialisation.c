@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/01 13:34:43 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/03 19:54:20 by jefferson        ###   ########.fr       */
+/*   Updated: 2017/07/07 14:39:16 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ int		ft_place_cursor(void)
 	if (!(cursor = tgetstr("cm", NULL)))
 		return (ft_errno(NO_STR));
 	ft_putstr_fd(tgoto(cursor, 0, 0), 0);
+	ft_putstr_fd(tgetstr("vi", NULL), 0);
 	return (0);
 }

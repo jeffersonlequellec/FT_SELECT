@@ -6,7 +6,7 @@
 #    By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/13 09:11:48 by jle-quel          #+#    #+#              #
-#    Updated: 2017/07/02 20:20:02 by jle-quel         ###   ########.fr        #
+#    Updated: 2017/07/07 15:44:13 by jle-quel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ SRC = ft_atoi.c ft_bzero.c ft_intlen.c ft_isalnum.c ft_isalpha.c ft_toupper.c \
 	  ft_countwords.c ft_lstnew.c ft_lstiter.c ft_lstdel.c ft_lstadd.c \
 	  ft_lstdelone.c ft_lstmap.c ft_lstlen.c ft_lstaddend.c ft_lstmalloc.c ft_lstprint.c \
 	  ft_lstdelnode.c ft_printarray.c ft_arraylen.c get_next_line.c \
-	  ft_threejoin.c ft_arraydel.c ft_listdel.c ft_populate_list.c ft_atoi_mod.c
+	  ft_threejoin.c ft_arraydel.c ft_listdel.c ft_populate_list.c \
+	  ft_atoi_mod.c ft_print_in_color.c
 
 all: $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/30 08:53:32 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/03 19:54:34 by jefferson        ###   ########.fr       */
+/*   Updated: 2017/07/07 16:01:45 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,26 @@
 
 # define UP_ARROW 4283163
 # define DO_ARROW 4348699
+# define SPACE 32
+# define SURLINE "\033[45m"
+
+/*
+** ERRNO
+*/
+
+# define NO_ARGV 666
+# define NO_VAR 667
+# define NO_ENTRY 668
+# define NO_DB 669
+# define NO_ID 670
+# define NO_STR 671
+# define NO_TMS 672
+# define NO_SET 673
+# define NO_READ 674
+
+/*
+** eop = End Of Program
+*/
 
 typedef struct		s_select
 {
@@ -27,24 +47,16 @@ typedef struct		s_select
 }					t_select;
 
 /*
-** ERRNO
-*/
-
-# define NO_ARGV 0
-# define NO_VAR 1
-# define NO_ENTRY 2
-# define NO_DB 3
-# define NO_ID 4
-# define NO_STR 5
-# define NO_TMS 6
-# define NO_SET 7
-# define NO_READ 8
-
-/*
 ** FT_TOOLS.C
 */
 
 int					ft_errno(int error);
+
+/*
+** FT_DISPLAY.C
+*/
+void				ft_print_underline(t_list *node, int height);
+void				ft_move_cursor(char *line, int argc, int *height);
 
 /*
 ** FT_INITIALISATION.C
@@ -59,6 +71,6 @@ int					ft_place_cursor(void);
 ** FT_SELECT.C
 */
 
-int					ft_select(int argc);
+int					ft_select(int argc, t_list *node);
 
 #endif
