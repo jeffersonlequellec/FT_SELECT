@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/10 09:42:08 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/07 15:43:58 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/08 14:32:00 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct			s_struct
 typedef struct			s_list
 {
 	char				*content;
+	char				*color;
 	size_t				content_size;
 	struct s_list		*next;
 }						t_list;
@@ -43,7 +44,6 @@ typedef struct			s_list
 /*
 ** MINE
 */
-t_list					*ft_lstmalloc(size_t len);
 void					ft_lstaddnext(t_list **node, t_list *new);
 void					ft_printlst(t_list *node);
 t_list					*ft_lstdelnode(t_list *node);
@@ -52,7 +52,6 @@ size_t					ft_arraylen(char **argv);
 char					*ft_threejoin(char *s1, char *separator, char *s2);
 void					ft_arraydel(char ***array, size_t len);
 void					ft_dellst(t_list **node);
-t_list					*ft_populate_list(char **argv);
 int						ft_atoi_mod(char *str);
 size_t					ft_lstlen(t_list *node);
 void					ft_print_in_color(char *str, char *color);
@@ -69,7 +68,7 @@ void					ft_lstdel(t_list **alst, void (*del)(void *,
 void					ft_lstadd(t_list **alst, t_list *new);
 void					ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list					*ft_lstnew(const char *content,
-						size_t content_size);
+						size_t content_size, char *color);
 int						ft_countwords(const char *s, char c);
 size_t					ft_pimplen(const char *str, int n);
 size_t					ft_intlen(int n, int neg);

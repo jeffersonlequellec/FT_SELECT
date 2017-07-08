@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/30 08:53:32 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/07 16:01:45 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/08 17:02:51 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define DO_ARROW 4348699
 # define SPACE 32
 # define SURLINE "\033[45m"
+# define ENDLINE "\033[0m"
 
 /*
 ** ERRNO
@@ -51,12 +52,14 @@ typedef struct		s_select
 */
 
 int					ft_errno(int error);
+t_list				*ft_populate_list(char **argv);
 
 /*
 ** FT_DISPLAY.C
 */
 void				ft_print_underline(t_list *node, int height);
-void				ft_move_cursor(char *line, int argc, int *height);
+void				ft_iter_list(t_list *node, int height);
+void				ft_print_arguments(t_list *node);
 
 /*
 ** FT_INITIALISATION.C

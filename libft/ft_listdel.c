@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/01 10:28:46 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/01 10:30:56 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/08 14:29:20 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_dellst(t_list **node)
 		temp2 = temp;
 		temp = temp->next;
 		ft_strdel(&temp2->content);
+		ft_strdel(&temp2->color);
 		free(temp2);
 	}
 }

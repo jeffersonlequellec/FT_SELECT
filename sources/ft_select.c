@@ -6,16 +6,37 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 15:15:52 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/07 16:03:34 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/08 17:18:40 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
 
+void	ft_move_cursor(char *line, int argc, int *height)
+{
+	if (ft_atoi_mod(line) == UP_ARROW)
+		ft_putstr_fd(tgoto(tgetstr("cm", NULL), 0, *height -= 1), 0);
+	else if (ft_atoi_mod(line) == DO_ARROW)
+		ft_putstr_fd(tgoto(tgetstr("cm", NULL), 0, *height += 1), 0);
+	if (*height >= argc)
+	{
+		*height = 0;
+		ft_putstr_fd(tgoto(tgetstr("cm", NULL), 0, *height), 0);
+	}
+	else if (*height < 0)
+	{
+		*height = argc - 1;
+		ft_putstr_fd(tgoto(tgetstr("cm", NULL), 0, *height), 0);
+	}
+}
+
+
 static void		ft_display(char *line, int argc, t_list *node, int *height)
 {
 	ft_move_cursor(line, argc, height);
-	CHK_IV(ft_clear_shell());
+	ft_clear_shell();
+	if (*line == SPACE)
+		ft_iter_list(node, *height);
 	ft_print_underline(node, *height);
 }
 
@@ -25,10 +46,14 @@ int				ft_select(int argc, t_list *node)
 	char	*line;
 
 	height = 0;
-	while (get_next_line(0, &line))
+	while (get_next_line(0, &line) == 1)
 	{
-		if (*line == 'Q') // MEMORY LEAKS (LINE IS NOT FREE IF BREAK)
+		if (*line == 0)
+		{
+			ft_putendl("non");
+			ft_strdel(&line);
 			break ;
+		}
 		ft_display(line, argc, node, &height);
 		ft_strdel(&line);
 	}

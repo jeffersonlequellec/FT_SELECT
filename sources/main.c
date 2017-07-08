@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/30 08:59:28 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/07 14:39:10 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/08 17:22:38 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ static int		ft_end_of_program(t_list **node, t_select var)
 	if (tcsetattr(0, TCSADRAIN, &var.eop) == 1)
 		return (ft_errno(NO_SET));
 	ft_putstr_fd(tgetstr("ve", NULL), 0);
-	ft_dellst(node);
 	CHK_II(ft_clear_shell());
+	ft_print_arguments(*node);
+	ft_dellst(node);
 	return (0);
 }
 

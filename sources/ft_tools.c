@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/01 10:59:59 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/03 17:08:18 by jefferson        ###   ########.fr       */
+/*   Updated: 2017/07/08 14:33:55 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,19 @@ int		ft_errno(int error)
 	else if (error == NO_READ)
 		ft_putendl_fd("ft_select: Error with function read", 2);
 	return (-1);
+}
+
+t_list	*ft_populate_list(char **argv)
+{
+	size_t	index;
+	t_list	*node;
+
+	index = 1;
+	node = ft_lstnew(argv[0], 0, ft_threejoin(SURLINE, argv[0], ENDLINE));
+	while(argv[index])
+	{
+		ft_lstaddnext(&node, ft_lstnew(argv[index], 0, ft_threejoin(SURLINE, argv[index], ENDLINE)));
+		index++;
+	}
+	return (node);
 }
