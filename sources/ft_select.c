@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 15:15:52 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/08 17:18:40 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/08 19:05:26 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,21 @@ void	ft_move_cursor(char *line, int argc, int *height)
 }
 
 
-static void		ft_display(char *line, int argc, t_list *node, int *height)
+static void		ft_display(char *line, int argc, t_list **node, int *height)
 {
+	if (*line == SPACE)
+	{
+		ft_iter_list(*node, *height);
+		*height += 1;
+	}
+	if (*line == DELETE)
+		// remove node from list
 	ft_move_cursor(line, argc, height);
 	ft_clear_shell();
-	if (*line == SPACE)
-		ft_iter_list(node, *height);
-	ft_print_underline(node, *height);
+	ft_print_underline(*node, *height);
 }
 
-int				ft_select(int argc, t_list *node)
+int				ft_select(int argc, t_list **node)
 {
 	int		height;
 	char	*line;
@@ -50,7 +55,6 @@ int				ft_select(int argc, t_list *node)
 	{
 		if (*line == 0)
 		{
-			ft_putendl("non");
 			ft_strdel(&line);
 			break ;
 		}

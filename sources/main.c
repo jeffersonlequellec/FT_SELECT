@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/30 08:59:28 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/08 17:22:38 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/08 18:57:15 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		main(int argc, char **argv)
 	if (argc < 2)
 		return (ft_errno(NO_ARGV));
 	CHK_II(ft_initialisation(argv, &node, &var));
-	CHK_II(ft_select(argc - 1, node));
+	CHK_II(ft_select(argc - 1, &node));
 	CHK_II(ft_end_of_program(&node, var));
 	return (0);
 }
