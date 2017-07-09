@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/01 10:59:59 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/08 19:05:17 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/09 12:20:26 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,47 @@ t_list	*ft_populate_list(char **argv)
 	node = ft_lstnew(argv[0], 0, ft_threejoin(SURLINE, argv[0], ENDLINE));
 	while(argv[index])
 	{
-		ft_lstaddnext(&node, ft_lstnew(argv[index], 0, ft_threejoin(SURLINE, argv[index], ENDLINE)));
+		ft_lstaddnext(&node, ft_lstnew(argv[index], 0,
+		ft_threejoin(SURLINE, argv[index], ENDLINE)));
 		index++;
 	}
 	return (node);
+}
+
+void	ft_delete_node(t_list **node)
+{
+	t_list	*temp;
+
+	temp = *node;
+	ft_strdel(&temp->content);
+	ft_strdel(&temp->color);
+	free(temp);
+	temp = NULL;
+}
+
+void	ft_delete_from_list(t_list **node, int height)
+{
+	int		index;
+	t_list	*temp;
+	t_list	*old;
+
+	index = 0;
+	temp = *node;
+	if (height == 0)
+	{
+		*node = (*node)->next;
+		ft_delete_node(&temp);
+		return ;
+	}
+	while (temp)
+	{
+		old = temp;
+		temp = temp->next;
+		index++;
+		if (index == height)
+		{
+			old->next = temp->next;
+			ft_delete_node(&temp);
+		}
+	}
 }

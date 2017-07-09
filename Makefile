@@ -6,7 +6,7 @@
 #    By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/06/02 12:01:32 by jle-quel          #+#    #+#              #
-#    Updated: 2017/07/07 14:25:41 by jle-quel         ###   ########.fr        #
+#    Updated: 2017/07/09 12:05:30 by jle-quel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRC =	./sources/main.c \
 		./sources/ft_initialisation.c \
 		./sources/ft_select.c \
 		./sources/ft_display.c \
+		./sources/ft_cursor.c \
 
 OBJ = $(SRC:.c=.o)
 

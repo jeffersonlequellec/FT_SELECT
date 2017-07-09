@@ -6,13 +6,13 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/01 13:34:43 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/07 14:39:16 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/09 12:41:31 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
 
-int		ft_initiate_terms(t_select *var)
+int		ft_initiate_terms(termios *eop)
 {
 	int				result;
 	char			*terminal_type;
@@ -23,7 +23,7 @@ int		ft_initiate_terms(t_select *var)
 		return (ft_errno(NO_ENTRY));
 	if (result == -1)
 		return (ft_errno(NO_DB));
-	if (tcgetattr(0, &var->eop) == -1)
+	if (tcgetattr(0, eop) == -1)
 		return (ft_errno(NO_TMS));
 	return (0);
 }

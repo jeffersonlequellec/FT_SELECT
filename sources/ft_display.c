@@ -6,13 +6,13 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/07 14:24:21 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/08 17:23:38 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/09 11:59:01 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
 
-void	ft_surline(char **content, size_t *flag, char **color)
+static void		ft_surline(char **content, size_t *flag, char **color)
 {
 	char	*memory;
 	char	*temp;
@@ -41,7 +41,7 @@ void	ft_surline(char **content, size_t *flag, char **color)
 	}
 }
 
-void	ft_iter_list(t_list *node, int height)
+void			ft_iter_list(t_list *node, int height)
 {
 	int			index;
 	t_list		*temp;
@@ -57,7 +57,7 @@ void	ft_iter_list(t_list *node, int height)
 	}
 }
 
-void	ft_print_underline(t_list *node, int height)
+void			ft_print_underline(t_list *node, int height)
 {
 	int		index;
 	t_list	*temp;
@@ -79,7 +79,7 @@ void	ft_print_underline(t_list *node, int height)
 	}
 }
 
-void	ft_print_arguments(t_list *node)
+void			ft_print_arguments(t_list *node)
 {
 	size_t	ret;
 	t_list	*temp;
