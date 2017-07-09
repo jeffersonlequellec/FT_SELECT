@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/01 13:34:43 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/09 12:41:31 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/09 18:18:08 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int		ft_initiate_terms(termios *eop)
 		return (ft_errno(NO_DB));
 	if (tcgetattr(0, eop) == -1)
 		return (ft_errno(NO_TMS));
+	ft_signal();
 	return (0);
 }
 

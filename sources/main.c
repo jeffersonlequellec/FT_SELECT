@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/30 08:59:28 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/09 12:41:21 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/09 18:18:45 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int		ft_initialisation(char **argv, t_list **node, termios *eop)
 	return (0);
 }
 
-int		main(int argc, char **argv)
+int				main(int argc, char **argv)
 {
 	t_list			*node;
 	char			*line;

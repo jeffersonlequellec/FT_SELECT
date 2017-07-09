@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/07 14:24:21 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/09 11:59:01 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/09 15:51:30 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,20 +60,22 @@ void			ft_iter_list(t_list *node, int height)
 void			ft_print_underline(t_list *node, int height)
 {
 	int		index;
+	int		fd;
 	t_list	*temp;
 
 	index = 0;
 	temp = node;
+	fd = open("/dev/tty", O_RDWR);
 	while (temp)
 	{
 		if (index == height)
 		{
 			ft_putstr_fd(tgetstr("us", NULL), 0);
-			ft_putendl(temp->content);
+			ft_putendl_fd(temp->content, fd);
 			ft_putstr_fd(tgetstr("ue", NULL), 0);
 		}
 		else
-			ft_putendl(temp->content);
+			ft_putendl_fd(temp->content, fd);
 		index++;
 		temp = temp->next;
 	}

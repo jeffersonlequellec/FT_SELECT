@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/30 08:53:32 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/09 12:41:50 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/09 15:52:07 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <sys/ioctl.h>
 # include <curses.h>
 # include <term.h>
+# include <fcntl.h>
 
 # define UP_ARROW 4283163
 # define DO_ARROW 4348699
@@ -78,7 +79,13 @@ int					ft_place_cursor(void);
 ** FT_SELECT.C
 */
 
-char *					ft_select(t_list **node);
+char *				ft_select(t_list **node);
+
+/*
+** FT_SIGNAL.C
+*/
+
+void				ft_signal(void);
 
 
 #endif
