@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/01 10:59:59 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/09 12:20:26 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/10 18:59:20 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int		ft_errno(int error)
 		ft_putendl_fd("ft_select: Couldn't change value of struct termios.", 2);
 	else if (error == NO_READ)
 		ft_putendl_fd("ft_select: Error with function read", 2);
+	else if (error == NO_CUR)
+		ft_putendl_fd("ft_select: Couldn't use termcap function", 2);
 	return (-1);
 }
 
@@ -87,4 +89,23 @@ void	ft_delete_from_list(t_list **node, int height)
 			ft_delete_node(&temp);
 		}
 	}
+}
+
+int		ft_longest_word(t_list *node)
+{
+	int		len;
+	int		ret;
+	t_list	*temp;
+
+	len = 0;
+	ret = 0;
+	temp = node;
+	while (temp)
+	{
+		len = ft_strlen(temp->color);
+		if (ret < len)
+			ret = len;
+		temp = temp->next;
+	}
+	return (ret);
 }

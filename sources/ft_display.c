@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/07 14:24:21 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/09 15:51:30 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/10 19:01:09 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,27 +57,41 @@ void			ft_iter_list(t_list *node, int height)
 	}
 }
 
+void			ft_print(char *str, int fd, int index, int height)
+{
+	if (index == height)
+	{
+		ft_putstr_fd(tgetstr("us", NULL), 0);
+		ft_putstr_fd(str, fd);
+		ft_putstr_fd(tgetstr("ue", NULL), 0);
+	}
+	else
+		ft_putstr_fd(str, fd);
+}
+
 void			ft_print_underline(t_list *node, int height)
 {
-	int		index;
-	int		fd;
-	t_list	*temp;
+	int				index;
+	t_select		var;
+	static int		fd;
+	t_list			*temp;
 
 	index = 0;
-	temp = node;
+	var.col = 0;
+	var.row = 0;
 	fd = open("/dev/tty", O_RDWR);
+	temp = node;
 	while (temp)
 	{
-		if (index == height)
-		{
-			ft_putstr_fd(tgetstr("us", NULL), 0);
-			ft_putendl_fd(temp->content, fd);
-			ft_putstr_fd(tgetstr("ue", NULL), 0);
-		}
-		else
-			ft_putendl_fd(temp->content, fd);
-		index++;
+		ioctl(0, TIOCGWINSZ, &var.ws);
+		ft_putstr_fd(tgoto(tgetstr("cm", NULL), var.col, var.row++), 0);
+		ft_print(temp->content, fd, index++, height);
 		temp = temp->next;
+		if (var.row == var.ws.ws_row)
+		{
+			var.row = 0;
+			var.col += ft_longest_word(node) - 5;
+		}
 	}
 }
 

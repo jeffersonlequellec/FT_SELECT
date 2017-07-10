@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/01 13:34:43 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/09 18:18:08 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/10 15:42:45 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,27 @@ int		ft_initiate_terms(termios *eop)
 	if (tcgetattr(0, eop) == -1)
 		return (ft_errno(NO_TMS));
 	ft_signal();
+	return (0);
+}
+
+int		ft_cursor_invisible(void)
+{
+	char	*vi;
+
+	if (!(vi = tgetstr("vi", NULL)))
+		return (ft_errno(NO_CUR));
+	ft_putstr_fd(vi, 0);
+	return (0);
+
+}
+
+int		ft_cursor_visible(void)
+{
+	char	*ve;
+
+	if (!(ve = tgetstr("ve", NULL)))
+		return (ft_errno(NO_CUR));
+	ft_putstr_fd(ve, 0);
 	return (0);
 }
 
@@ -61,6 +82,5 @@ int		ft_place_cursor(void)
 	if (!(cursor = tgetstr("cm", NULL)))
 		return (ft_errno(NO_STR));
 	ft_putstr_fd(tgoto(cursor, 0, 0), 0);
-	ft_putstr_fd(tgetstr("vi", NULL), 0);
 	return (0);
 }
