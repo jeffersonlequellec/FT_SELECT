@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/01 13:34:43 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/10 15:42:45 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/11 18:27:49 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int		ft_cursor_invisible(void)
 		return (ft_errno(NO_CUR));
 	ft_putstr_fd(vi, 0);
 	return (0);
-
 }
 
 int		ft_cursor_visible(void)

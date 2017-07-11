@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/30 08:53:32 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/10 15:42:32 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/11 19:02:23 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 
 # define UP_ARROW 4283163
 # define DO_ARROW 4348699
+# define LE_ARROW 4479771
+# define RI_ARROW 4414235
 # define SPACE 32
 # define ESCAPE 27 && !line[1]
 # define DELETE 2117294875
@@ -39,13 +41,16 @@
 # define NO_READ 674
 # define NO_CUR 675
 
-typedef struct termios termios;
+typedef struct termios	termios;
 typedef struct			s_select
 {
 	int					col;
 	int					row;
 	struct winsize		ws;
 }						t_select;
+
+extern t_list			*g_node;
+extern int				g_height;
 
 /*
 ** FT_CURSOR.C
@@ -69,6 +74,8 @@ void					ft_delete_from_list(t_list **node, int height);
 void					ft_print_underline(t_list *node, int height);
 void					ft_iter_list(t_list *node, int height);
 void					ft_print_arguments(t_list *node);
+int					ft_can_print(t_list *node);
+int						ft_check(t_select *var, t_list *node, char *str);
 
 /*
 ** FT_INITIALISATION.C
@@ -87,6 +94,7 @@ int						ft_cursor_visible(void);
 */
 
 char					*ft_select(t_list **node);
+t_list					*ft_global_node(t_list *node, int flag);
 
 /*
 ** FT_SIGNAL.C

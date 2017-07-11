@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/01 10:59:59 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/10 18:59:20 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/11 18:23:57 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_list	*ft_populate_list(char **argv)
 
 	index = 1;
 	node = ft_lstnew(argv[0], 0, ft_threejoin(SURLINE, argv[0], ENDLINE));
-	while(argv[index])
+	while (argv[index])
 	{
 		ft_lstaddnext(&node, ft_lstnew(argv[index], 0,
 		ft_threejoin(SURLINE, argv[index], ENDLINE)));

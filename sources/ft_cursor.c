@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/09 11:55:34 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/10 15:55:49 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/11 14:21:27 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,17 @@
 
 void	ft_move_cursor(char *line, int *height)
 {
+	struct winsize	ws;
+
+	ioctl(0, TIOCGWINSZ, &ws);
 	if (ft_atoi_mod(line) == UP_ARROW)
 		ft_putstr_fd(tgoto(tgetstr("cm", NULL), 0, *height -= 1), 0);
 	else if (ft_atoi_mod(line) == DO_ARROW)
 		ft_putstr_fd(tgoto(tgetstr("cm", NULL), 0, *height += 1), 0);
+	else if (ft_atoi_mod(line) == LE_ARROW)
+		ft_putstr_fd(tgoto(tgetstr("cm", NULL), 0, *height -= ws.ws_row), 0);
+	else if (ft_atoi_mod(line) == RI_ARROW)
+		ft_putstr_fd(tgoto(tgetstr("cm", NULL), 0, *height += ws.ws_row), 0);
 }
 
 void	ft_check_cursor(int *height, t_list *node)

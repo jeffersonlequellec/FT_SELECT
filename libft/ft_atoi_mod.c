@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 20:19:29 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/02 20:19:36 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/11 18:29:09 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int		ft_atoi_mod(char *str)
 {
 	int		*ptr;
+
 	ptr = (int*)str;
 	return (*ptr);
 }

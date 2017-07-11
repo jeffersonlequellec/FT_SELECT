@@ -6,16 +6,22 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/30 08:59:28 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/10 17:17:20 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/11 18:24:51 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
 
 /*
-** EOP = End Of Program
-** CHK_II = If (a == -1) return (-1)
+** EOP = End Of Program.
+** CHK_II = If (a == -1) return (-1).
+**
+** Global_(Node && Height) are used by the window size signal, to be able
+** to reprint the arguments flawlessly.
 */
+
+t_list			*g_node;
+int				g_height;
 
 static int		ft_end_of_program(t_list **node, termios *eop, char **line)
 {
@@ -32,6 +38,7 @@ static int		ft_end_of_program(t_list **node, termios *eop, char **line)
 static int		ft_initialisation(char **argv, t_list **node, termios *eop)
 {
 	*node = ft_populate_list(argv + 1);
+	g_node = *node;
 	CHK_II(ft_initiate_terms(eop));
 	CHK_II(ft_cursor_invisible());
 	CHK_II(ft_to_non_canonique());

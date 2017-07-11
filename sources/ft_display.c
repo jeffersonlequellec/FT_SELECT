@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/07 14:24:21 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/10 19:01:09 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/11 19:26:07 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,22 @@ void			ft_print(char *str, int fd, int index, int height)
 		ft_putstr_fd(str, fd);
 }
 
+int				ft_check(t_select *var, t_list *node, char *str)
+{
+	if (var->row == var->ws.ws_row)
+	{
+		var->row = 0;
+		var->col += ft_longest_word(node);
+	}
+	if (var->col + ft_strlen(str) >= var->ws.ws_col)
+	{
+		ft_clear_shell();
+		ft_putendl("ft_select: The windows is too small to print all the arguments.");
+		return (-1);
+	}
+	return (0);
+}
+
 void			ft_print_underline(t_list *node, int height)
 {
 	int				index;
@@ -84,14 +100,11 @@ void			ft_print_underline(t_list *node, int height)
 	while (temp)
 	{
 		ioctl(0, TIOCGWINSZ, &var.ws);
+		if (ft_check(&var, node, temp->content) == -1)
+			break ;
 		ft_putstr_fd(tgoto(tgetstr("cm", NULL), var.col, var.row++), 0);
 		ft_print(temp->content, fd, index++, height);
 		temp = temp->next;
-		if (var.row == var.ws.ws_row)
-		{
-			var.row = 0;
-			var.col += ft_longest_word(node) - 5;
-		}
 	}
 }
 
@@ -107,10 +120,9 @@ void			ft_print_arguments(t_list *node)
 		if (temp->content_size == 1)
 		{
 			ft_putstr(temp->color);
+			ft_putchar(' ');
 			ret++;
 		}
-		if (temp->next && ret > 0)
-			ft_putchar(' ');
 		temp = temp->next;
 	}
 	if (ret > 0)
