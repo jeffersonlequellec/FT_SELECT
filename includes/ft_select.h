@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/30 08:53:32 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/14 18:16:38 by jefferson        ###   ########.fr       */
+/*   Updated: 2017/07/14 23:48:58 by jefferson        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@
 # define NO_CUR 675
 # define NO_SIG 676
 
-typedef struct termios	termios;
 typedef struct			s_select
 {
 	int					col;
@@ -57,14 +56,13 @@ extern int				g_height;
 ** FT_CURSOR.C
 */
 
-void					ft_move_cursor(char *line, int *height);
+void					ft_move_cursor(char *line, int *height, t_list *node);
 void					ft_check_cursor(int *height, t_list *node);
 int						ft_cursor_invisible(void);
 int						ft_cursor_visible(void);
-int						ft_place_cursor(void);
 
 /*
-** FT_TERMCAP.C
+** FT_INITIALISATION.C
 */
 
 int						ft_to_canonique(void);

@@ -6,7 +6,7 @@
 /*   By: jefferso <jefferso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 18:09:52 by jefferso          #+#    #+#             */
-/*   Updated: 2017/07/14 18:11:25 by jefferson        ###   ########.fr       */
+/*   Updated: 2017/07/15 00:00:40 by jefferson        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,14 @@ void	ft_sigtstp(int sig)
 	term.c_lflag |= (ICANON | ECHO);
 	ioctl(0, TIOCSTI, c);
 	ft_cursor_visible();
-	tcsetattr(0, TCSANOW, &term);
+	tcsetattr(0, TCSADRAIN, &term);
 }
 
 void	ft_other_signals(int sig)
 {
-	static struct termios	eop;
-
 	(void)sig;
-	tcgetattr(0, &eop);
-	tcsetattr(0, 0, &eop);
-	ft_putstr_fd(tgetstr("ve", NULL), 0);
+	ft_clear_shell();
+	ft_to_canonique();
+	ft_cursor_visible();
 	exit(1);
 }

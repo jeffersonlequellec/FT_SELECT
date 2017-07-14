@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 15:15:52 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/14 18:13:12 by jefferson        ###   ########.fr       */
+/*   Updated: 2017/07/14 23:52:05 by jefferson        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,12 @@ static int		ft_display(char *line, t_list **node, int *height)
 		*height += 1;
 	}
 	else if (ft_atoi_mod(line) == DELETE || *line == BACKSPACE)
+	{
+		ft_clear_shell();
 		ft_delete_from_list(node, *height);
-	ft_move_cursor(line, height);
+	}
+	ft_move_cursor(line, height, *node);
 	ft_check_cursor(height, *node);
-	ft_clear_shell();
 	ft_print_underline(*node, *height);
 	if (ft_lstlen(*node) == 0)
 		return (-1);

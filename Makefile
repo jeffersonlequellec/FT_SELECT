@@ -6,7 +6,7 @@
 #    By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/06/02 12:01:32 by jle-quel          #+#    #+#              #
-#    Updated: 2017/07/14 18:18:11 by jefferson        ###   ########.fr        #
+#    Updated: 2017/07/14 23:47:52 by jefferson        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,15 +14,15 @@ NAME = ft_select
 
 FLAGS += -Wall -Wextra -Werror -I includes
 
-SRC =	./sources/main.c		\
-		./sources/ft_tools.c	\
-		./sources/ft_termcap.c	\
-		./sources/ft_signal1.c	\
-		./sources/ft_signal2.c	\
-		./sources/ft_select.c	\
-		./sources/ft_display1.c	\
-		./sources/ft_display2.c	\
-		./sources/ft_cursor.c	\
+SRC =	./sources/main.c				\
+		./sources/ft_tools.c			\
+		./sources/ft_initialisation.c	\
+		./sources/ft_signal1.c			\
+		./sources/ft_signal2.c			\
+		./sources/ft_select.c			\
+		./sources/ft_display1.c			\
+		./sources/ft_display2.c			\
+		./sources/ft_cursor.c			\
 
 OBJ = $(SRC:.c=.o)
 
@@ -39,7 +39,7 @@ $(LIBFT):
 	@make -C libft
 
 $(NAME): $(LIBFT) $(OBJ)
-	@gcc $(OBJ) $(LIBFT) -lncurses -o $(NAME)
+	@gcc $(OBJ) $(LIBFT) -ltermcap -o $(NAME)
 	@echo "\033[32mCompiled Executable\033[0m"
 
 clean:
