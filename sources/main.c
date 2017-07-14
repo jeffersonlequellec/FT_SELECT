@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/30 08:59:28 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/11 18:24:51 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/14 14:02:12 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,9 @@
 t_list			*g_node;
 int				g_height;
 
-static int		ft_end_of_program(t_list **node, termios *eop, char **line)
+static int		ft_end_of_program(t_list **node, char **line)
 {
-	if (tcsetattr(0, TCSADRAIN, eop) == 1)
-		return (ft_errno(NO_SET));
+	CHK_II(ft_to_canonique());
 	CHK_II(ft_cursor_visible());
 	CHK_II(ft_clear_shell());
 	**line == ENTER ? ft_print_arguments(*node) : 0;
@@ -35,11 +34,11 @@ static int		ft_end_of_program(t_list **node, termios *eop, char **line)
 	return (0);
 }
 
-static int		ft_initialisation(char **argv, t_list **node, termios *eop)
+static int		ft_initialisation(char **argv, t_list **node)
 {
 	*node = ft_populate_list(argv + 1);
 	g_node = *node;
-	CHK_II(ft_initiate_terms(eop));
+	CHK_II(ft_initiate_terms());
 	CHK_II(ft_cursor_invisible());
 	CHK_II(ft_to_non_canonique());
 	CHK_II(ft_clear_shell());
@@ -51,12 +50,12 @@ int				main(int argc, char **argv)
 {
 	t_list			*node;
 	char			*line;
-	struct termios	eop;
 
 	if (argc < 2)
 		return (ft_errno(NO_ARGV));
-	CHK_II(ft_initialisation(argv, &node, &eop));
+	ft_signal();
+	CHK_II(ft_initialisation(argv, &node));
 	CHK_CI((line = ft_select(&node)));
-	CHK_II(ft_end_of_program(&node, &eop, &line));
+	CHK_II(ft_end_of_program(&node, &line));
 	return (0);
 }

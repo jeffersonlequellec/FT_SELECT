@@ -6,23 +6,11 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/09 13:44:05 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/11 19:26:15 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/14 16:22:46 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
-
-static void		ft_sigcont(int sig)
-{
-	sig = 0;
-	ft_putendl("SIGCONT");
-}
-
-static void		ft_sigtstp(int sig)
-{
-	sig = 0;
-	ft_putendl("SIGTSTP");
-}
 
 int			ft_can_print(t_list *node)
 {
@@ -49,7 +37,7 @@ int			ft_can_print(t_list *node)
 
 static void		ft_sigwinch(int sig)
 {
-	sig = 0;
+	(void)sig;
 	ft_clear_shell();
 	if (ft_can_print(g_node) == 0)
 		ft_print_underline(g_node, g_height);
@@ -60,11 +48,34 @@ static void		ft_sigwinch(int sig)
 	}
 }
 
+static void		ft_sigcont(int sig)
+{
+	(void)sig;
+	ft_clear_shell();
+	ft_cursor_invisible();
+	ft_to_non_canonique();
+}
+
+static void		ft_sigtstp(int sig)
+{
+	struct termios	term;
+	char			c[2];
+
+	signal(sig, SIG_DFL);
+	tcgetattr(0, &term);
+	c[0] = term.c_cc[VSUSP];
+	c[1] = '\0';
+	term.c_lflag |= (ICANON | ECHO);
+	ioctl(0, TIOCSTI, c);
+	ft_cursor_visible();
+	tcsetattr(0, TCSANOW, &term);
+}
+
 static void		ft_other_signals(int sig)
 {
 	static struct termios	eop;
 
-	sig = 0;
+	(void)sig;
 	tcgetattr(0, &eop);
 	tcsetattr(0, 0, &eop);
 	ft_putstr_fd(tgetstr("ve", NULL), 0);
@@ -73,11 +84,11 @@ static void		ft_other_signals(int sig)
 
 static void		ft_directionel(int sig)
 {
-	if (sig == 18)
+	if (sig == SIGTSTP)
 		ft_sigtstp(sig);
-	else if (sig == 19)
+	else if (sig == SIGCONT)
 		ft_sigcont(sig);
-	else if (sig == 28)
+	else if (sig == SIGWINCH)
 		ft_sigwinch(sig);
 	else
 		ft_other_signals(sig);

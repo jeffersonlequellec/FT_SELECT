@@ -6,13 +6,13 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/01 13:34:43 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/11 18:27:49 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/14 13:56:18 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
 
-int		ft_initiate_terms(termios *eop)
+int		ft_initiate_terms(void)
 {
 	int				result;
 	char			*terminal_type;
@@ -23,9 +23,6 @@ int		ft_initiate_terms(termios *eop)
 		return (ft_errno(NO_ENTRY));
 	if (result == -1)
 		return (ft_errno(NO_DB));
-	if (tcgetattr(0, eop) == -1)
-		return (ft_errno(NO_TMS));
-	ft_signal();
 	return (0);
 }
 
@@ -55,8 +52,7 @@ int		ft_to_non_canonique(void)
 
 	if (tcgetattr(0, &term) == -1)
 		return (ft_errno(NO_TMS));
-	term.c_lflag &= ~(ICANON);
-	term.c_lflag &= ~(ECHO);
+	term.c_lflag &= ~(ICANON | ECHO);
 	term.c_cc[VMIN] = 1;
 	term.c_cc[VTIME] = 0;
 	if (tcsetattr(0, TCSADRAIN, &term) == 1)

@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/30 08:53:32 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/11 19:02:23 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/14 14:01:42 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 # define NO_SET 673
 # define NO_READ 674
 # define NO_CUR 675
+# define NO_SIG 676
 
 typedef struct termios	termios;
 typedef struct			s_select
@@ -81,7 +82,7 @@ int						ft_check(t_select *var, t_list *node, char *str);
 ** FT_INITIALISATION.C
 */
 
-int						ft_initiate_terms(struct termios *eop);
+int						ft_initiate_terms(void);
 int						ft_to_non_canonique(void);
 int						ft_clear_shell(void);
 int						ft_place_cursor(void);
@@ -102,4 +103,9 @@ t_list					*ft_global_node(t_list *node, int flag);
 
 void					ft_signal(void);
 
+/*
+** FT_END_OF_PROGRAM.C
+*/
+
+int						ft_to_canonique(void);
 #endif

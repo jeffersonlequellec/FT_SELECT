@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/01 10:59:59 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/11 18:23:57 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/14 13:59:25 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int		ft_errno(int error)
 		ft_putendl_fd("ft_select: Error with function read", 2);
 	else if (error == NO_CUR)
 		ft_putendl_fd("ft_select: Couldn't use termcap function", 2);
+	else if (error == NO_SIG)
+		ft_putendl_fd("ft_select: Couldn't catch the signal", 2);
 	return (-1);
 }
 
