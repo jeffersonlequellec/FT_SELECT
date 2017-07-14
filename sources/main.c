@@ -6,19 +6,11 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/30 08:59:28 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/14 14:02:12 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/14 18:03:50 by jefferson        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
-
-/*
-** EOP = End Of Program.
-** CHK_II = If (a == -1) return (-1).
-**
-** Global_(Node && Height) are used by the window size signal, to be able
-** to reprint the arguments flawlessly.
-*/
 
 t_list			*g_node;
 int				g_height;

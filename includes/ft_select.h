@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/30 08:53:32 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/14 14:01:42 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/14 18:16:38 by jefferson        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,42 @@ extern int				g_height;
 
 void					ft_move_cursor(char *line, int *height);
 void					ft_check_cursor(int *height, t_list *node);
+int						ft_cursor_invisible(void);
+int						ft_cursor_visible(void);
+int						ft_place_cursor(void);
+
+/*
+** FT_TERMCAP.C
+*/
+
+int						ft_to_canonique(void);
+int						ft_clear_shell(void);
+int						ft_initiate_terms(void);
+int						ft_to_non_canonique(void);
+
+/*
+** FT_SIGNAL1.C / FT_SIGNAL2.C
+*/
+
+void					ft_signal(void);
+void					ft_other_signals(int sig);
+void					ft_sigtstp(int sig);
+void					ft_sigcont(int sig);
+
+/*
+** FT_SELECT.C
+*/
+
+char					*ft_select(t_list **node);
+
+/*
+** FT_DISPLAY1.C / FT_DISPLAY2.C
+*/
+void					ft_iter_list(t_list *node, int height);
+void					ft_print_arguments(t_list *node);
+void					ft_print_underline(t_list *node, int height);
+int						ft_check(t_select *var, t_list *node, char *str);
+void					ft_print(char *str, int fd, int index, int height);
 
 /*
 ** FT_TOOLS.C
@@ -69,43 +105,4 @@ int						ft_errno(int error);
 t_list					*ft_populate_list(char **argv);
 void					ft_delete_from_list(t_list **node, int height);
 
-/*
-** FT_DISPLAY.C
-*/
-void					ft_print_underline(t_list *node, int height);
-void					ft_iter_list(t_list *node, int height);
-void					ft_print_arguments(t_list *node);
-int					ft_can_print(t_list *node);
-int						ft_check(t_select *var, t_list *node, char *str);
-
-/*
-** FT_INITIALISATION.C
-*/
-
-int						ft_initiate_terms(void);
-int						ft_to_non_canonique(void);
-int						ft_clear_shell(void);
-int						ft_place_cursor(void);
-int						ft_cursor_invisible(void);
-int						ft_cursor_invisible(void);
-int						ft_cursor_visible(void);
-
-/*
-** FT_SELECT.C
-*/
-
-char					*ft_select(t_list **node);
-t_list					*ft_global_node(t_list *node, int flag);
-
-/*
-** FT_SIGNAL.C
-*/
-
-void					ft_signal(void);
-
-/*
-** FT_END_OF_PROGRAM.C
-*/
-
-int						ft_to_canonique(void);
 #endif

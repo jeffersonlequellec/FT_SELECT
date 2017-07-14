@@ -6,13 +6,13 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/01 10:59:59 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/14 13:59:25 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/14 18:16:20 by jefferson        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
 
-int		ft_errno(int error)
+int				ft_errno(int error)
 {
 	if (error == NO_ARGV)
 		ft_putendl_fd("ft_select: Too few arguments.", 2);
@@ -39,7 +39,7 @@ int		ft_errno(int error)
 	return (-1);
 }
 
-t_list	*ft_populate_list(char **argv)
+t_list			*ft_populate_list(char **argv)
 {
 	size_t	index;
 	t_list	*node;
@@ -55,7 +55,7 @@ t_list	*ft_populate_list(char **argv)
 	return (node);
 }
 
-void	ft_delete_node(t_list **node)
+static void		ft_delete_node(t_list **node)
 {
 	t_list	*temp;
 
@@ -66,7 +66,7 @@ void	ft_delete_node(t_list **node)
 	temp = NULL;
 }
 
-void	ft_delete_from_list(t_list **node, int height)
+void			ft_delete_from_list(t_list **node, int height)
 {
 	int		index;
 	t_list	*temp;
@@ -93,7 +93,7 @@ void	ft_delete_from_list(t_list **node, int height)
 	}
 }
 
-int		ft_longest_word(t_list *node)
+int				ft_longest_word(t_list *node)
 {
 	int		len;
 	int		ret;

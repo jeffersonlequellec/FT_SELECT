@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/09 11:55:34 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/11 14:21:27 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/14 18:06:04 by jefferson        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,34 @@ void	ft_check_cursor(int *height, t_list *node)
 		*height = len - 1;
 		ft_putstr_fd(tgoto(tgetstr("cm", NULL), 0, *height), 0);
 	}
+}
+
+int		ft_place_cursor(void)
+{
+	char	*cursor;
+
+	if (!(cursor = tgetstr("cm", NULL)))
+		return (ft_errno(NO_STR));
+	ft_putstr_fd(tgoto(cursor, 0, 0), 0);
+	return (0);
+}
+
+int		ft_cursor_visible(void)
+{
+	char	*ve;
+
+	if (!(ve = tgetstr("ve", NULL)))
+		return (ft_errno(NO_CUR));
+	ft_putstr_fd(ve, 0);
+	return (0);
+}
+
+int		ft_cursor_invisible(void)
+{
+	char	*vi;
+
+	if (!(vi = tgetstr("vi", NULL)))
+		return (ft_errno(NO_CUR));
+	ft_putstr_fd(vi, 0);
+	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/06/02 12:01:32 by jle-quel          #+#    #+#              #
-#    Updated: 2017/07/14 14:00:55 by jle-quel         ###   ########.fr        #
+#    Updated: 2017/07/14 18:18:11 by jefferson        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,14 +14,15 @@ NAME = ft_select
 
 FLAGS += -Wall -Wextra -Werror -I includes
 
-SRC =	./sources/main.c \
-		./sources/ft_tools.c \
-		./sources/ft_initialisation.c \
-		./sources/ft_select.c \
-		./sources/ft_display.c \
-		./sources/ft_cursor.c \
-		./sources/ft_signal.c \
-		./sources/ft_end_of_program.c \
+SRC =	./sources/main.c		\
+		./sources/ft_tools.c	\
+		./sources/ft_termcap.c	\
+		./sources/ft_signal1.c	\
+		./sources/ft_signal2.c	\
+		./sources/ft_select.c	\
+		./sources/ft_display1.c	\
+		./sources/ft_display2.c	\
+		./sources/ft_cursor.c	\
 
 OBJ = $(SRC:.c=.o)
 
