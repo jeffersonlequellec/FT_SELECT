@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/09 13:44:05 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/14 16:22:46 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/14 17:47:24 by jefferson        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ static void		ft_sigwinch(int sig)
 	else
 	{
 		ft_clear_shell();
-		ft_putendl("ft_select: The windows is too small to print all the arguments.");
+		ft_putendl(
+			"ft_select: The windows is too small to print all the arguments.");
 	}
 }
 
@@ -54,6 +55,7 @@ static void		ft_sigcont(int sig)
 	ft_clear_shell();
 	ft_cursor_invisible();
 	ft_to_non_canonique();
+	ft_print_underline(g_node, g_height);
 }
 
 static void		ft_sigtstp(int sig)

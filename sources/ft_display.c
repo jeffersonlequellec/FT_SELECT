@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/07 14:24:21 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/14 11:37:37 by jle-quel         ###   ########.fr       */
+/*   Updated: 2017/07/14 17:55:52 by jefferson        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,15 +71,20 @@ void			ft_print(char *str, int fd, int index, int height)
 
 int				ft_check(t_select *var, t_list *node, char *str)
 {
+	static size_t	len = 0;
+
+	if (len == 0)
+		len = ft_longest_word(node) - 5;
 	if (var->row == var->ws.ws_row)
 	{
 		var->row = 0;
-		var->col += ft_longest_word(node);
+		var->col += len;
 	}
 	if (var->col + ft_strlen(str) >= var->ws.ws_col)
 	{
 		ft_clear_shell();
-		ft_putendl("ft_select: The windows is too small to print all the arguments.");
+		ft_putendl(
+			"ft_select: The windows is too small to print all the arguments.");
 		return (-1);
 	}
 	return (0);
