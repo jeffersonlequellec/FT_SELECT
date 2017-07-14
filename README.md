@@ -9,10 +9,6 @@ which will allow you to pick from a list of choices and return it to your shell.
 
 2 -> ft_select [argv...]
 
-Move around with: arrows.
+Move around with: arrows. | Surline with: space.
 
-Surline with: space.
-
-Print with: enter.
-
-End with: escape.
+| Print with: enter. | End with: escape.
