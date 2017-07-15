@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/09 13:44:05 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/14 23:33:51 by jefferson        ###   ########.fr       */
+/*   Updated: 2017/07/15 16:25:17 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static int		ft_can_print(t_list *node)
 static void		ft_sigwinch(int sig)
 {
 	(void)sig;
+	ft_clear_shell();
 	if (ft_can_print(g_node) == 0)
 		ft_print_underline(g_node, g_height);
 	else

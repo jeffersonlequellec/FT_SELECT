@@ -6,7 +6,7 @@
 /*   By: jle-quel <jle-quel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/09 11:55:34 by jle-quel          #+#    #+#             */
-/*   Updated: 2017/07/14 23:53:55 by jefferson        ###   ########.fr       */
+/*   Updated: 2017/07/15 12:47:49 by jle-quel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ void			ft_move_cursor(char *line, int *height, t_list *node)
 		ft_putstr_fd(tgoto(tgetstr("cm", NULL), 0, *height -= ws.ws_row), 0);
 	else if (ft_atoi_mod(line) == RI_ARROW)
 		ft_putstr_fd(tgoto(tgetstr("cm", NULL), 0, *height += ws.ws_row), 0);
-	else if (!(ft_atoi_mod(line) == DELETE || *line == BACKSPACE))
+	else if (!(
+		ft_atoi_mod(line) == DELETE || *line == BACKSPACE || *line == SPACE))
 		if ((d_search = ft_dynamic_search(line, node, height)) > 0)
 			ft_putstr_fd(tgoto(tgetstr("cm", NULL), 0, *height = d_search), 0);
 }
@@ -72,7 +73,7 @@ void			ft_check_cursor(int *height, t_list *node)
 	}
 }
 
-int		ft_cursor_visible(void)
+int				ft_cursor_visible(void)
 {
 	char	*ve;
 
@@ -82,7 +83,7 @@ int		ft_cursor_visible(void)
 	return (0);
 }
 
-int		ft_cursor_invisible(void)
+int				ft_cursor_invisible(void)
 {
 	char	*vi;
 
